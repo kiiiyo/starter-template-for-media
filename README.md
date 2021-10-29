@@ -2,4 +2,4 @@
 
 ## Requirement
 
-- Node.js `14.14.0` or later
+- Node.js `14.15.0` or later
