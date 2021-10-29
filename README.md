@@ -1,1 +1,1 @@
-# starter-template-for-media
+# Starter Template for Media
