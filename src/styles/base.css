@@ -1,0 +1,19 @@
+@import 'tailwindcss/base';
+
+/* Write your own custom base styles here */
+
+/* Start purging... */
+@import 'tailwindcss/components';
+/* Stop purging. */
+
+/* Start purging... */
+@import 'tailwindcss/utilities';
+/* Stop purging. */
+
+/* Your own custom utilities */
+
+@layer base {
+  body {
+    @apply bg-gray-100;
+  }
+}
