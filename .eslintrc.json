@@ -4,8 +4,10 @@
     "es6": true //ES6の書き方許可
   },
   "extends": [
+    "next",
     "eslint:recommended", //ESLintおすすめルールの読み込み
-    "prettier" //Prettier適用
+    "prettier", //Prettier適用
+    "plugin:tailwindcss/recommended"
   ],
   //個別ルール
   "rules": {
