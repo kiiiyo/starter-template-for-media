@@ -1,4 +1,11 @@
 {
+  "version": "0.0.0",
+  "author": "kiiiyo <kiiiyo.jp@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": "14"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
