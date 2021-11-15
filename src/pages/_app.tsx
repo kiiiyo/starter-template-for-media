@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import '@fortawesome/fontawesome-svg-core/styles.css'
 //
 import '../styles/base.css'
 
