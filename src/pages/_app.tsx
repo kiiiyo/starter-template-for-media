@@ -1,7 +1,18 @@
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+//
 import '../styles/base.css'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const App = ({ Component, pageProps }: AppProps) => (
+  <>
+    <Head>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+    </Head>
+    <Component {...pageProps} />
+  </>
+)
 
-export default MyApp
+export default App
