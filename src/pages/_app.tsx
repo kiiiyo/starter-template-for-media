@@ -2,7 +2,7 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 //
-import '../styles/base.css'
+import '../styles/globals.css'
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
