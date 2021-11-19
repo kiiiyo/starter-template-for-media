@@ -19,3 +19,4 @@ export type IconName =
   | 'github'
   | 'twitter'
   | 'facebook-square'
+  | 'bars'

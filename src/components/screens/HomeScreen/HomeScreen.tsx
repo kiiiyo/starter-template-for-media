@@ -1,15 +1,8 @@
 import { FC } from 'react'
 //
-import { Templates, Atoms } from '../../../components'
-/**
- * Interface
- */
+import { Templates, Atoms } from '../..'
 
-/**
- * Template component
- */
-
-export const HomePage: FC = () => {
+export const HomeScreen: FC = () => {
   return (
     <Templates.GenericTemplate
       headerBar={
@@ -31,7 +24,7 @@ export const HomePage: FC = () => {
                   className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
                   aria-label="toggle menu"
                 >
-                  <Atoms.Icon size="2x" prefix="fab" name="twitter" />
+                  <Atoms.Icon size="2x" prefix="fas" name="bars" />
                 </button>
               </div>
               {/* --- */}

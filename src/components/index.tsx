@@ -1,5 +1,5 @@
 import * as Atoms from './atoms'
 import * as Templates from './templates'
-import * as Pages from './pages'
+import * as Screens from './screens'
 
-export { Pages, Templates, Atoms }
+export { Screens, Templates, Atoms }

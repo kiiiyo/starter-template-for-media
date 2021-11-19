@@ -1,9 +1,9 @@
-import { Pages, Atoms } from '../components'
+import { Screens } from '../components'
 
 function HomePage() {
   return (
     <>
-      <Pages.HomePage />
+      <Screens.HomeScreen />
     </>
   )
 }
