@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-gray-100;
+    @apply bg-white;
   }
   #__next {
-    @apply flex flex-col min-h-screen bg-gray-100;
+    @apply flex flex-col min-h-screen bg-white;
   }
 }
 

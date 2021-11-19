@@ -6,8 +6,8 @@ import { FC } from 'react'
  */
 
 export interface GenericTemplateProps {
-  headerBar?: React.ReactNode
-  footer?: React.ReactNode
+  globalHeader?: React.ReactNode
+  globalFooter?: React.ReactNode
   children?: React.ReactNode
 }
 
@@ -16,15 +16,17 @@ export interface GenericTemplateProps {
  */
 
 export const GenericTemplate: FC<GenericTemplateProps> = ({
-  headerBar,
-  footer,
+  globalHeader,
+  globalFooter,
   children,
 }) => {
   return (
     <>
-      <div>{headerBar}</div>
-      <div>{children}</div>
-      <div>{footer}</div>
+      <div>{globalHeader}</div>
+      <div className="bg-gray-100">
+        <main className="container p-4 mx-auto ">{children}</main>
+      </div>
+      <div>{globalFooter}</div>
     </>
   )
 }
