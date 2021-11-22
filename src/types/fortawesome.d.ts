@@ -20,3 +20,4 @@ export type IconName =
   | 'twitter'
   | 'facebook-square'
   | 'bars'
+  | 'times'
