@@ -1,3 +1,3 @@
-import * as MobileGlobalNavigation from './mobileGlobalNavigation'
+import * as App from './app'
 
-export { MobileGlobalNavigation }
+export { App }

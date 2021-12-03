@@ -1,10 +1,7 @@
 import { FC } from 'react'
 //
-import {
-  MobileGlobalNavigationDisplayConditionType,
-  Actions as MobileGlobalNavigationActions,
-} from '../../../contexts/MobileGlobalNavigationContext'
-import { MobileGlobalNavigation } from '../../../hooks'
+import { MobileGlobalMenuDisplayConditionType } from '../../../contexts/AppContext'
+import { App } from '../../../hooks'
 //
 import { Atoms } from '../../'
 
@@ -13,10 +10,14 @@ import { Atoms } from '../../'
  */
 
 export type State = {
-  displayCondition: MobileGlobalNavigationDisplayConditionType
+  mobileGlobalMenuDisplayCondition: MobileGlobalMenuDisplayConditionType
 }
 
-export type Actions = MobileGlobalNavigationActions
+export type Actions = {
+  handleMobileGlobalMenuDisplayCondition: (
+    condition: MobileGlobalMenuDisplayConditionType
+  ) => void
+}
 
 export type GlobalHeaderPresenterProps = {
   state: State
@@ -31,8 +32,8 @@ export const GlobalHeaderPresenter: FC<GlobalHeaderPresenterProps> = (
   props
 ) => {
   const {
-    state: { displayCondition },
-    actions: { handleDisplayCondition },
+    state: { mobileGlobalMenuDisplayCondition },
+    actions: { handleMobileGlobalMenuDisplayCondition },
   } = props
 
   return (
@@ -44,26 +45,26 @@ export const GlobalHeaderPresenter: FC<GlobalHeaderPresenterProps> = (
               className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
               href="#"
             >
-              Brand : {displayCondition}
+              Brand : {mobileGlobalMenuDisplayCondition}
             </a>
           </div>
           {/* Mobile menu button */}
           <div className="flex md:hidden">
-            {displayCondition === 'CLOSE' && (
+            {mobileGlobalMenuDisplayCondition === 'SHOW' && (
               <button
                 type="button"
                 className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
-                onClick={() => handleDisplayCondition('OPEN')}
+                onClick={() => handleMobileGlobalMenuDisplayCondition('HIDE')}
               >
                 <Atoms.Icon size="2x" prefix="fas" name="times" />
               </button>
             )}
 
-            {displayCondition === 'OPEN' && (
+            {mobileGlobalMenuDisplayCondition === 'HIDE' && (
               <button
                 type="button"
                 className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
-                onClick={() => handleDisplayCondition('CLOSE')}
+                onClick={() => handleMobileGlobalMenuDisplayCondition('SHOW')}
               >
                 <Atoms.Icon size="2x" prefix="fas" name="bars" />
               </button>
@@ -78,14 +79,14 @@ export const GlobalHeaderPresenter: FC<GlobalHeaderPresenterProps> = (
 
 export const GlobalHeader: FC = () => {
   const {
-    state: { displayCondition },
-    actions: { handleDisplayCondition },
-  } = MobileGlobalNavigation.useMobileGlobalNavigation()
+    state: { mobileGlobalMenuDisplayCondition },
+    actions: { handleMobileGlobalMenuDisplayCondition },
+  } = App.useAppContext()
 
   return (
     <GlobalHeaderPresenter
-      state={{ displayCondition }}
-      actions={{ handleDisplayCondition }}
+      state={{ mobileGlobalMenuDisplayCondition }}
+      actions={{ handleMobileGlobalMenuDisplayCondition }}
     />
   )
 }
