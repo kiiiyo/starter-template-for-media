@@ -1,7 +1,7 @@
 import { FC } from 'react'
 //
 import { MobileGlobalMenuDisplayConditionType } from '../../../contexts/AppContext'
-import { App } from '../../../hooks'
+import { Hooks } from '../../../features'
 //
 import { Atoms } from '../../'
 
@@ -48,6 +48,7 @@ export const GlobalHeaderPresenter: FC<GlobalHeaderPresenterProps> = (
               Brand : {mobileGlobalMenuDisplayCondition}
             </a>
           </div>
+
           {/* Mobile menu button */}
           <div className="flex md:hidden">
             {mobileGlobalMenuDisplayCondition === 'SHOW' && (
@@ -81,7 +82,7 @@ export const GlobalHeader: FC = () => {
   const {
     state: { mobileGlobalMenuDisplayCondition },
     actions: { handleMobileGlobalMenuDisplayCondition },
-  } = App.useAppContext()
+  } = Hooks.App.useAppContext()
 
   return (
     <GlobalHeaderPresenter
