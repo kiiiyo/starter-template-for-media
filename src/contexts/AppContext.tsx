@@ -1,4 +1,12 @@
-import React, { FC, createContext, useState, useCallback } from 'react'
+import React, {
+  FC,
+  createContext,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react'
+//
+import { Env } from '../features'
 
 /**
  * Interface
@@ -7,6 +15,11 @@ import React, { FC, createContext, useState, useCallback } from 'react'
 export type MobileGlobalMenuDisplayConditionType = 'SHOW' | 'HIDE'
 
 export type State = {
+  screenSize: {
+    width: Number
+    height: Number
+  }
+  isMobile: Boolean
   mobileGlobalMenuDisplayCondition: MobileGlobalMenuDisplayConditionType
 }
 
@@ -28,6 +41,11 @@ export type AppContextValueType = {
 const initContextValue: AppContextValueType = {
   state: {
     mobileGlobalMenuDisplayCondition: 'HIDE',
+    screenSize: {
+      width: 0,
+      height: 0,
+    },
+    isMobile: false,
   },
   actions: {
     handleMobileGlobalMenuDisplayCondition: () => {},
@@ -46,6 +64,12 @@ export const useAppContext = (): AppContextValueType => {
     mobileGlobalMenuDisplayCondition,
     setMobileGlobalMenuDisplayCondition,
   ] = useState<MobileGlobalMenuDisplayConditionType>('HIDE')
+
+  const [screenSize, setScreenSize] = useState({
+    width: 0,
+    height: 0,
+  })
+
   // Actions
   const handleMobileGlobalMenuDisplayCondition = useCallback(
     (condition) => {
@@ -54,8 +78,28 @@ export const useAppContext = (): AppContextValueType => {
     [setMobileGlobalMenuDisplayCondition]
   )
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleResize = () => {
+        setScreenSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        })
+      }
+      window.addEventListener('resize', handleResize)
+      handleResize()
+      return () => window.removeEventListener('resize', handleResize)
+    } else {
+      return
+    }
+  }, [])
+
   return {
-    state: { mobileGlobalMenuDisplayCondition },
+    state: {
+      screenSize,
+      isMobile: screenSize.width <= Env.MOBILE_BREAK_POINT_SIZE,
+      mobileGlobalMenuDisplayCondition,
+    },
     actions: { handleMobileGlobalMenuDisplayCondition },
   }
 }

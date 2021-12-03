@@ -2,14 +2,20 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false,
   theme: {
-    theme: {
-      screens: {
-        sm: { min: '480px', max: '639px' },
-        md: { min: '640px', max: '1023px' },
-        lg: { min: '1024px', max: '1279px' },
-        xl: { min: '1280px', max: '1535px' },
-        '2xl': { min: '1536px' },
-      },
+    screens: {
+      sm: '640px',
+      // => @media (min-width: 640px) { ... }
+
+      md: '767px',
+      // => @media (min-width: 768px) { ... }
+
+      lg: '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      xl: '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
     },
   },
   variants: {
