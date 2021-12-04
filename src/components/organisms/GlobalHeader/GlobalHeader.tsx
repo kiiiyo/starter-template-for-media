@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 //
 import { MobileGlobalMenuDisplayConditionType } from '../../../contexts/AppContext'
 import { Hooks, Env } from '../../../features'
@@ -112,12 +112,12 @@ export const GlobalHeaderPresenter: FC<GlobalHeaderPresenterProps> = (
             {Env.GLOBAL_MENU_LIST.map(
               (menuItem: MenuItemType, index: number) => {
                 return (
-                  <>
-                    <a key={index} className="block p-5" href={menuItem.path}>
+                  <React.Fragment key={index}>
+                    <a className="block p-5" href={menuItem.path}>
                       {menuItem.label}
                     </a>
                     <hr className="border-gray-200 dark:border-gray-700" />
-                  </>
+                  </React.Fragment>
                 )
               }
             )}

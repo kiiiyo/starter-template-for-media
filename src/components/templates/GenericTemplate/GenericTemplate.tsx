@@ -24,7 +24,7 @@ export const GenericTemplate: FC<GenericTemplateProps> = ({
     <>
       <div>{globalHeader}</div>
       <div className="bg-gray-100">
-        <main className="container p-4 mx-auto ">{children}</main>
+        <main className="lg:container p-6 mx-auto ">{children}</main>
       </div>
       <div>{globalFooter}</div>
     </>

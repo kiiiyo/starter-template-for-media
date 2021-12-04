@@ -12,7 +12,7 @@ import { FC } from 'react'
 export const GlobalFooter: FC = () => {
   return (
     <div className="bg-white">
-      <div className="container px-4 py-6 mx-auto">
+      <div className="lg:container p-6 mx-auto">
         <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-x-6">
           <div className="mb-6 md:col-span-3 lg:col-span-1">
             <a

@@ -1,4 +1,4 @@
-# Starter Template for Media
+# Compose Starter for Media
 
 ## Requirement
 
