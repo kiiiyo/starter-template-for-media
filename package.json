@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "contentful-typescript-codegen": "contentful-typescript-codegen --output src/types/contentful.d.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -39,6 +40,7 @@
     "babel-loader": "^8.2.3",
     "contentful-management": "^7.45.7",
     "contentful-typescript-codegen": "^3.2.3",
+    "dotenv": "^10.0.0",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "postcss": "^8.3.11",
