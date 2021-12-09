@@ -1,5 +1,5 @@
-import { Domain } from '../index'
-import { apiContentfulClient } from '../../utils/api'
+import { Domain } from '@/features'
+import { apiContentfulClient } from '@/utils/api'
 
 export const postCollection: () => Promise<Domain.Post.Collection> =
   async () => {
