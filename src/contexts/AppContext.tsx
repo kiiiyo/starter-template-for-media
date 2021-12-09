@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from 'react'
 //
-import { Env } from '../features'
+import { Env } from '@/features'
 
 /**
  * Interface
