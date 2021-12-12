@@ -8,3 +8,8 @@ export type Fields = IPostFields
 export type Entity = Entry<Fields>
 
 export type Collection = EntryCollection<Fields>
+
+export type CollectionQuery = {
+  limit: number
+  offset: number
+}
