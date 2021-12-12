@@ -5,15 +5,22 @@ import { Templates, Organisms } from '@/components'
 
 export type State = {
   postCollection: Domain.Post.Collection
+  pageOffset: number
+}
+
+export type Action = {
+  handleChangePage: (selectedItem: { selected: number }) => void
 }
 
 export type HomeScreenProps = {
   state: State
+  action: Action
 }
 
 export const HomeScreen: FC<HomeScreenProps> = (props) => {
   const {
-    state: { postCollection },
+    state: { postCollection, pageOffset },
+    action: { handleChangePage },
   } = props
   return (
     <Templates.GenericTemplate
@@ -27,7 +34,13 @@ export const HomeScreen: FC<HomeScreenProps> = (props) => {
           } = post
           return <h1 key={index}>{title}</h1>
         })}
-      aaaaaaa
+      <Organisms.Pagination
+        state={{
+          totalCount: postCollection.total,
+          pageOffset,
+        }}
+        action={{ handleChangePage }}
+      />
     </Templates.GenericTemplate>
   )
 }
