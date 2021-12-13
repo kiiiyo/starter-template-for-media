@@ -1,15 +1,53 @@
-import { Entry, EntryCollection } from 'contentful'
+import {
+  Entry as ContentfulEntry,
+  EntryCollection as ContentfulEntryCollection,
+} from 'contentful'
+import { Document } from '@contentful/rich-text-types'
 import { IPostFields } from '@/types/contentful'
+//
+import { Domain } from '@/features'
 
 export type ContentType = 'post'
 
 export type Fields = IPostFields
-
-export type Entity = Entry<Fields>
-
-export type Collection = EntryCollection<Fields>
+export type Entry = ContentfulEntry<Fields>
+export type EntryCollection = ContentfulEntryCollection<Fields>
 
 export type CollectionQuery = {
   limit: number
   offset: number
+}
+
+export type Image = {
+  title: string
+  url: string
+}
+
+export type Author = {
+  name: string
+}
+
+export type Category = {
+  name: string
+  slug: string
+  createdAt: string
+  updatedAt: string
+}
+
+export type Entity = {
+  title: string
+  slug: string
+  description: string | null
+  content: Document | null
+  image: Image | null
+  author: Author | null
+  category: Category | null
+  tags: Domain.Tag.Collection | []
+  createdAt: string
+  updatedAt: string
+}
+
+export type Collection = {
+  total: number
+  items: Array<Entity>
 }
