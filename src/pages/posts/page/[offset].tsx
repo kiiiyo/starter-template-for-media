@@ -14,10 +14,6 @@ import { Screens } from '@/components'
 export const getStaticPaths: GetStaticPaths = async () => {
   const totalCount = await Usecase.Post.postTotalCount()
 
-  // const paths = [...Array(Math.ceil(totalCount / COLLECTION_LIMIT))]
-  //   .map((_, i) => i)
-  //   .map((offset) => `/posts/page/${offset}`)
-
   const range = (start: number, end: number) =>
     [...Array(end - start + 1)].map((_, i) => start + i)
 
@@ -44,19 +40,18 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 
   return {
     props: {
-      state: { postCollection, offset },
+      state: { postCollection },
     },
   }
 }
 
 const DynamicPage: NextPage<DynamicPageProps> = (props) => {
   const {
-    state: { postCollection, offset },
+    state: { postCollection },
   } = props
   const router = useRouter()
   const handleChangePage = useCallback(
     (selectedItem: { selected: number }) => {
-      console.log('handleChangePage', selectedItem)
       Router.push(`/posts/page/${selectedItem.selected + 1}`)
     },
     [router]
@@ -64,7 +59,7 @@ const DynamicPage: NextPage<DynamicPageProps> = (props) => {
 
   return (
     <Screens.HomeScreen
-      state={{ postCollection, pageOffset: offset }}
+      state={{ postCollection }}
       action={{ handleChangePage }}
     />
   )

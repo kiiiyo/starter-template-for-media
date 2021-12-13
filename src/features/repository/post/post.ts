@@ -1,5 +1,7 @@
 import { Domain } from '@/features'
 import { contentfulClient } from '@/libs/contentful'
+//
+import { postsMapping } from './mapper'
 
 export const postCollection: (
   query: Domain.Post.CollectionQuery
@@ -12,7 +14,8 @@ export const postCollection: (
     limit,
     skip: limit * (offset - 1),
   })
-  return await data
+
+  return await postsMapping(data)
 }
 
 export const postTotalCount: () => Promise<number> = async () => {

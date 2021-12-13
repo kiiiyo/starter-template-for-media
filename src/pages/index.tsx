@@ -36,7 +36,6 @@ const HomePage: NextPage<HomePageProps> = (props) => {
     state: { postCollection },
   } = props
   const router = useRouter()
-  const offset = 1
 
   const handleChangePage = useCallback(
     (selectedItem: { selected: number }) => {
@@ -51,7 +50,7 @@ const HomePage: NextPage<HomePageProps> = (props) => {
 
   return (
     <Screens.HomeScreen
-      state={{ postCollection, pageOffset: offset }}
+      state={{ postCollection }}
       action={{ handleChangePage }}
     />
   )

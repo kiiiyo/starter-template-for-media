@@ -5,7 +5,6 @@ import { Templates, Organisms } from '@/components'
 
 export type State = {
   postCollection: Domain.Post.Collection
-  pageOffset: number
 }
 
 export type Action = {
@@ -19,7 +18,7 @@ export type HomeScreenProps = {
 
 export const HomeScreen: FC<HomeScreenProps> = (props) => {
   const {
-    state: { postCollection, pageOffset },
+    state: { postCollection },
     action: { handleChangePage },
   } = props
   return (
@@ -27,20 +26,17 @@ export const HomeScreen: FC<HomeScreenProps> = (props) => {
       globalHeader={<Organisms.GlobalHeader />}
       globalFooter={<Organisms.GlobalFooter />}
     >
-      {postCollection.items.length > 0 &&
-        postCollection.items.map((post: Domain.Post.Entity, index: number) => {
-          const {
-            fields: { title },
-          } = post
-          return <h1 key={index}>{title}</h1>
-        })}
-      <Organisms.Pagination
-        state={{
-          totalCount: postCollection.total,
-          pageOffset,
-        }}
-        action={{ handleChangePage }}
-      />
+      {postCollection.items.length > 0 && (
+        <Organisms.PostCollection state={{ postCollection }} />
+      )}
+      <div className="mt-6">
+        <Organisms.Pagination
+          state={{
+            totalCount: postCollection.total,
+          }}
+          action={{ handleChangePage }}
+        />
+      </div>
     </Templates.GenericTemplate>
   )
 }

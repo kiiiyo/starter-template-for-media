@@ -5,7 +5,6 @@ import { COLLECTION_LIMIT } from '@/constants'
 
 export type State = {
   totalCount: number
-  pageOffset: number
 }
 
 export type Action = {
@@ -22,13 +21,9 @@ export type PaginationProps = {
   action: Action
 }
 
-/**
- * Component
- */
-
 export const PaginationPresenter: FC<PaginationPresenterProps> = (props) => {
   const {
-    state: { totalCount, pageOffset },
+    state: { totalCount },
     action: { handleChangePage },
   } = props
 
@@ -64,15 +59,12 @@ export const PaginationPresenter: FC<PaginationPresenterProps> = (props) => {
 
 export const Pagination: FC<PaginationProps> = (props) => {
   const {
-    state: { totalCount, pageOffset },
+    state: { totalCount },
     action: { handleChangePage },
   } = props
 
   return (
-    <PaginationPresenter
-      state={{ totalCount, pageOffset }}
-      action={{ handleChangePage }}
-    />
+    <PaginationPresenter state={{ totalCount }} action={{ handleChangePage }} />
   )
 }
 

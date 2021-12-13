@@ -1,0 +1,1 @@
+export { PostCollection } from './PostCollection'
