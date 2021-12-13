@@ -4,8 +4,11 @@ import { Asset, Entry } from 'contentful'
 import { Document } from '@contentful/rich-text-types'
 
 export interface IAuthorFields {
-  /** Name */
-  name?: string | undefined
+  /** DisplayName */
+  displayName: string
+
+  /** AvatarImage */
+  avatarImage?: Asset | undefined
 }
 
 export interface IAuthor extends Entry<IAuthorFields> {
@@ -26,8 +29,8 @@ export interface IAuthor extends Entry<IAuthorFields> {
 }
 
 export interface ICategoryFields {
-  /** Name */
-  name: string
+  /** DisplayName */
+  displayName: string
 
   /** Slug */
   slug: string
@@ -70,10 +73,10 @@ export interface IPostFields {
   image?: Asset | undefined
 
   /** Authors */
-  authors?: IAuthor | undefined
+  authors: IAuthor
 
   /** Categories */
-  categories?: ICategory | undefined
+  categories: ICategory
 
   /** Tags */
   tags?: ITag[] | undefined
@@ -97,8 +100,8 @@ export interface IPost extends Entry<IPostFields> {
 }
 
 export interface ITagFields {
-  /** Name */
-  name: string
+  /** DisplayName */
+  displayName: string
 
   /** Slug */
   slug: string
