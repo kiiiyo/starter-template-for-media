@@ -1,13 +1,9 @@
-import { NextPage, GetStaticProps } from 'next'
-import React, { useCallback } from 'react'
-import Router, { useRouter } from 'next/router'
+import { NextPage } from 'next'
 //
-import { COLLECTION_LIMIT } from '@/constants'
-import { Domain, Usecase } from '@/features'
 import { Screens } from '@/components'
 
 const SearchPage: NextPage = () => {
-  return <Screens.SearchScreen action={{}} state={{}} />
+  return <Screens.SearchScreen />
 }
 
 export default SearchPage

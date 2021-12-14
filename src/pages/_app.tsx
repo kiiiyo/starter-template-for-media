@@ -1,9 +1,10 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import 'instantsearch.css/themes/satellite-min.css'
 //
-import { AppContextProvider } from '../contexts/AppContext'
-import '../styles/globals.css'
+import { AppContextProvider } from '@/contexts/AppContext'
+import '@/styles/globals.css'
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>

@@ -89,14 +89,13 @@ export const GlobalHeaderPresenter: FC<GlobalHeaderPresenterProps> = (
                 {GLOBAL_MENU_LIST.map(
                   (menuItem: MenuItemType, index: number) => {
                     return (
-                      <Link key={index} href="/">
-                        <a
-                          key={index}
-                          className="my-1 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
-                        >
-                          {menuItem.label}
-                        </a>
-                      </Link>
+                      <React.Fragment key={index}>
+                        <Link href={menuItem.path}>
+                          <a className="my-1 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0">
+                            {menuItem.label}
+                          </a>
+                        </Link>
+                      </React.Fragment>
                     )
                   }
                 )}
