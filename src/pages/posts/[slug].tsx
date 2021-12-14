@@ -5,6 +5,8 @@ import {
   GetStaticPropsContext,
 } from 'next'
 
+import { Usecase } from '@/features'
+
 type PostSinglePageProps = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
@@ -17,6 +19,10 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { params } = context
   const slug = String(params?.slug)
+
+  const page = await Usecase.Post.postDetail(slug)
+
+  console.log('page', page)
 
   return {
     props: {},

@@ -2,7 +2,6 @@ import { FC } from 'react'
 import Link from 'next/link'
 //
 import { Domain } from '@/features'
-import { formatUtcDay } from '@/libs/date'
 
 export type State = {
   postCollection: Domain.Post.Collection
@@ -94,7 +93,7 @@ export const PostCollectionPresenter: FC<PostCollectionPresenterProps> = (
                     </span>
                   </div>
                   <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
-                    {formatUtcDay(updatedAt)}
+                    {updatedAt}
                   </span>
                 </div>
               </div>

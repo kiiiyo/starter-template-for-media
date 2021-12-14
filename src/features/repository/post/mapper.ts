@@ -1,4 +1,5 @@
 import { Domain } from '@/features'
+import { formatUtcDay } from '@/libs/date'
 
 export const postsMapping = (
   posts: Domain.Post.EntryCollection
@@ -48,12 +49,12 @@ export const postMapping = (post: Domain.Post.Entry): Domain.Post.Entity => {
       displayName: categories.fields.displayName,
       description: categories.fields.description || '',
       slug: categories.fields.slug,
-      createdAt: categories.sys.createdAt,
-      updatedAt: categories.sys.updatedAt,
+      createdAt: formatUtcDay(categories.sys.createdAt),
+      updatedAt: formatUtcDay(categories.sys.updatedAt),
     },
     tags: tags ? tagsMapping(tags) : [],
-    createdAt,
-    updatedAt,
+    createdAt: formatUtcDay(createdAt),
+    updatedAt: formatUtcDay(updatedAt),
   }
 }
 
@@ -74,7 +75,7 @@ export const tagMapping = (tag: Domain.Tag.Entry): Domain.Tag.Entity => {
     displayName,
     slug,
     description: description || '',
-    createdAt,
-    updatedAt,
+    createdAt: formatUtcDay(createdAt),
+    updatedAt: formatUtcDay(updatedAt),
   }
 }

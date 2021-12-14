@@ -1,3 +1,3 @@
-import { postCollection, postTotalCount } from './post'
+import { postCollection, postTotalCount, postDetail } from './post'
 
-export { postCollection, postTotalCount }
+export { postCollection, postTotalCount, postDetail }
