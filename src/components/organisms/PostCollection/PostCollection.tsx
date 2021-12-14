@@ -33,9 +33,9 @@ export const PostCollectionPresenter: FC<PostCollectionPresenterProps> = (
         return (
           <article
             key={index}
-            className="lg:w-1/3 md:w-full mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800"
+            className="lg:w-1/3 md:w-full mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 mb-6"
           >
-            {/*TODO: unit-test */}
+            {/*TODO: unit test */}
             <Link href={`/posts/${slug}`}>
               <a>
                 {image ? (
@@ -45,15 +45,20 @@ export const PostCollectionPresenter: FC<PostCollectionPresenterProps> = (
                     src={image.url}
                   />
                 ) : (
-                  <div className="object-cover w-full h-48 bg-black"></div>
+                  <div className="object-cover w-full h-48 bg-gray-400 flex justify-center items-center">
+                    <span className="text-2xl font-bold text-white">
+                      No Image
+                    </span>
+                  </div>
                 )}
               </a>
             </Link>
             <div className="p-4">
+              {/*TODO: unit test */}
               {category && (
                 <Link href={`/categories/${category.slug}`}>
                   <a className="px-3 py-1 text-xs font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded">
-                    {category.name}
+                    {category.displayName}
                   </a>
                 </Link>
               )}
@@ -69,13 +74,22 @@ export const PostCollectionPresenter: FC<PostCollectionPresenterProps> = (
               <div className="mt-4">
                 <div className="flex items-center">
                   <div className="flex items-center">
-                    <img
-                      className="object-cover h-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                      alt="Avatar"
-                    />
+                    {author.avatarImage ? (
+                      <img
+                        className="object-cover h-10 rounded-full"
+                        src={author.avatarImage?.url}
+                        alt={author.avatarImage?.name}
+                      />
+                    ) : (
+                      <div className="object-cover h-10 w-10 bg-gray-400 rounded-full flex justify-center items-center">
+                        <span className="text-lg font-bold text-white">
+                          {author.displayName.slice(0, 1)}
+                        </span>
+                      </div>
+                    )}
+
                     <span className="mx-2 font-semibold text-gray-700 dark:text-gray-200">
-                      {author?.name}
+                      {author?.displayName}
                     </span>
                   </div>
                   <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">

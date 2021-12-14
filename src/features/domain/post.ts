@@ -23,25 +23,14 @@ export type Image = {
   url: string
 }
 
-export type Author = {
-  name: string
-}
-
-export type Category = {
-  name: string
-  slug: string
-  createdAt: string
-  updatedAt: string
-}
-
 export type Entity = {
   title: string
   slug: string
-  description: string | null
-  content: Document | null
-  image: Image | null
-  author: Author | null
-  category: Category | null
+  description?: string | null
+  content?: Document | null
+  image?: Image | null
+  author: Domain.Author.Entity
+  category: Domain.Category.Entity
   tags: Domain.Tag.Collection | []
   createdAt: string
   updatedAt: string

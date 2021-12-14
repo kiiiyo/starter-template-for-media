@@ -9,14 +9,14 @@ export const tagsMapping = (
 
 export const tagMapping = (tag: Domain.Tag.Entry): Domain.Tag.Entity => {
   const {
-    fields: { name, slug, description },
+    fields: { displayName, slug, description },
     sys: { createdAt, updatedAt },
   } = tag
 
   return {
-    name,
+    displayName,
     slug,
-    description: description || null,
+    description: description || '',
     createdAt,
     updatedAt,
   }

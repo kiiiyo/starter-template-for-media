@@ -27,7 +27,7 @@ export const postMapping = (post: Domain.Post.Entry): Domain.Post.Entity => {
   return {
     title,
     slug,
-    description: description || null,
+    description: description || '',
     content: content || null,
     image: image
       ? {
@@ -35,19 +35,22 @@ export const postMapping = (post: Domain.Post.Entry): Domain.Post.Entity => {
           url: image?.fields.file.url,
         }
       : null,
-    author: authors
-      ? {
-          name: authors.fields.name || '',
-        }
-      : null,
-    category: categories
-      ? {
-          name: categories.fields.name,
-          slug: categories.fields.slug,
-          createdAt: categories.sys.createdAt,
-          updatedAt: categories.sys.updatedAt,
-        }
-      : null,
+    author: {
+      displayName: authors.fields.displayName || '',
+      avatarImage: authors.fields.avatarImage
+        ? {
+            name: authors.fields.avatarImage.fields.title,
+            url: authors.fields.avatarImage.fields.file.url,
+          }
+        : null,
+    },
+    category: {
+      displayName: categories.fields.displayName,
+      description: categories.fields.description || '',
+      slug: categories.fields.slug,
+      createdAt: categories.sys.createdAt,
+      updatedAt: categories.sys.updatedAt,
+    },
     tags: tags ? tagsMapping(tags) : [],
     createdAt,
     updatedAt,
@@ -55,7 +58,7 @@ export const postMapping = (post: Domain.Post.Entry): Domain.Post.Entity => {
 }
 
 export const tagsMapping = (
-  tags: Domain.Tag.ReferenceTag[] | undefined
+  tags: Domain.Tag.ReferenceTag[] | []
 ): Domain.Tag.Collection => {
   if (!tags) return []
   return tags.map((tag) => tagMapping(tag))
@@ -63,14 +66,14 @@ export const tagsMapping = (
 
 export const tagMapping = (tag: Domain.Tag.Entry): Domain.Tag.Entity => {
   const {
-    fields: { name, slug, description },
+    fields: { displayName, slug, description },
     sys: { createdAt, updatedAt },
   } = tag
 
   return {
-    name,
+    displayName,
     slug,
-    description: description || null,
+    description: description || '',
     createdAt,
     updatedAt,
   }

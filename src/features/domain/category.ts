@@ -3,19 +3,18 @@ import {
   EntryCollection as ContentfulEntryCollection,
 } from 'contentful'
 
-import { ITagFields, ITag } from '@/types/contentful'
+import { ICategoryFields, ICategory } from '@/types/contentful'
 
-export type ContentType = 'tag'
-export type Fields = ITagFields
+export type ContentType = 'category'
+export type Fields = ICategoryFields
 export type Entry = ContentfulEntry<Fields>
 export type EntryCollection = ContentfulEntryCollection<Fields>
-export type ReferenceTag = ITag
-//
+export type ReferenceCategory = ICategory
+
 export type Entity = {
   displayName: string
   slug: string
-  description?: string
+  description: string | null
   createdAt: string
   updatedAt: string
 }
-export type Collection = Array<Entity>

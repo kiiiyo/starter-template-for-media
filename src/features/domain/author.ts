@@ -9,12 +9,12 @@ export type ContentType = 'author'
 export type Fields = IAuthorFields
 export type Entry = ContentfulEntry<Fields>
 export type EntryCollection = ContentfulEntryCollection<Fields>
-export type ReferenceTag = IAuthor
+export type ReferenceAuthor = IAuthor
 
 export type Entity = {
   displayName: string
-  avatarImage?: {
+  avatarImage: {
     name: string
     url: string
-  }
+  } | null
 }
