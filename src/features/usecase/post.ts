@@ -9,3 +9,8 @@ export const postCollection: (
 export const postTotalCount: () => Promise<number> = async () => {
   return await Repository.Post.postTotalCount()
 }
+
+export const postDetail: (slug: string) => Promise<Domain.Post.Entity | null> =
+  async (slug) => {
+    return await Repository.Post.postDetail(slug)
+  }

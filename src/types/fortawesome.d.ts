@@ -13,11 +13,11 @@ export type IconSize =
   | '9x'
   | '10x'
 
-export type IconName =
-  | 'arrow-right'
-  | 'arrow-left'
-  | 'github'
-  | 'twitter'
-  | 'facebook-square'
-  | 'bars'
-  | 'times'
+export type IconPrefix = 'fas' | 'fab'
+
+export type IconName = 'times' | 'bars' | 'chevron-right' | 'chevron-left'
+
+export type IconStyle = {
+  prefix: IconPrefix
+  name: IconName
+}

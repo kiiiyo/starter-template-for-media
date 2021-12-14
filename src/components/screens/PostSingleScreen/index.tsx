@@ -1,0 +1,1 @@
+export { PostSingleScreen } from './PostSingleScreen'

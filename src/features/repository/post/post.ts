@@ -1,7 +1,7 @@
 import { Domain } from '@/features'
 import { contentfulClient } from '@/libs/contentful'
 //
-import { postsMapping } from './mapper'
+import { postsMapping, postMapping } from './mapper'
 
 export const postCollection: (
   query: Domain.Post.CollectionQuery
@@ -24,3 +24,15 @@ export const postTotalCount: () => Promise<number> = async () => {
   })
   return await total
 }
+
+export const postDetail: (slug: string) => Promise<Domain.Post.Entity | null> =
+  async (slug) => {
+    const { total, items } =
+      await contentfulClient.getEntries<Domain.Post.Fields>({
+        content_type: 'post',
+        limit: 1,
+        'fields.slug': slug,
+      })
+
+    return total > 0 ? postMapping(items[0]) : null
+  }

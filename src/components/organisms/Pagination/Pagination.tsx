@@ -2,6 +2,7 @@ import { FC } from 'react'
 import ReactPaginate from 'react-paginate'
 //
 import { COLLECTION_LIMIT } from '@/constants'
+import { Atoms } from '@/components'
 
 export type State = {
   totalCount: number
@@ -36,20 +37,20 @@ export const PaginationPresenter: FC<PaginationPresenterProps> = (props) => {
         marginPagesDisplayed={5}
         pageRangeDisplayed={5}
         onPageChange={handleChangePage}
-        nextLabel=">"
+        nextLabel={<Atoms.Icon name="chevron-right" />}
         breakLabel="..."
-        previousLabel="<"
+        previousLabel={<Atoms.Icon name="chevron-left" />}
         containerClassName="flex mx-auto"
         activeClassName=""
-        activeLinkClassName="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 bg-blue-600 dark:hover:bg-blue-500 text-white dark:hover:text-gray-200"
+        activeLinkClassName="flex items-center px-4 h-10 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 bg-blue-600 dark:hover:bg-blue-500 text-white dark:hover:text-gray-200"
         pageClassName=""
-        pageLinkClassName="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
+        pageLinkClassName="flex items-center px-4 h-10 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
         previousClassName=""
-        previousLinkClassName="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
+        previousLinkClassName="flex items-center px-4 h-10 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
         nextClassName=""
-        nextLinkClassName="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
+        nextLinkClassName="flex items-center px-4 h-10 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
         disabledClassName=""
-        disabledLinkClassName="flex items-center px-4 py-2 mx-1 text-gray-500 bg-white rounded-md cursor-not-allowed dark:bg-gray-800 dark:text-gray-600"
+        disabledLinkClassName="flex items-center px-4 h-10 mx-1 text-gray-500 bg-white rounded-md cursor-not-allowed dark:bg-gray-800 dark:text-gray-600"
         breakClassName="transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
         breakLinkClassName=""
       />
