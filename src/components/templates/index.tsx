@@ -1,3 +1,4 @@
 import { GenericTemplate } from './GenericTemplate'
+import { SingleTemplate } from './SingleTemplate'
 
-export { GenericTemplate }
+export { GenericTemplate, SingleTemplate }
