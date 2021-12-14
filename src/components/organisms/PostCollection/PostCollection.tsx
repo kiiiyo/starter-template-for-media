@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 //
 import { Domain } from '@/features'
+import { formatUtcDay } from '@/libs/date'
 
 export type State = {
   postCollection: Domain.Post.Collection
@@ -76,7 +77,7 @@ export const PostCollectionPresenter: FC<PostCollectionPresenterProps> = (
                   <div className="flex items-center">
                     {author.avatarImage ? (
                       <img
-                        className="object-cover h-10 rounded-full"
+                        className="object-cover h-10 w-10 rounded-full"
                         src={author.avatarImage?.url}
                         alt={author.avatarImage?.name}
                       />
@@ -93,7 +94,7 @@ export const PostCollectionPresenter: FC<PostCollectionPresenterProps> = (
                     </span>
                   </div>
                   <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
-                    {updatedAt}
+                    {formatUtcDay(updatedAt)}
                   </span>
                 </div>
               </div>
